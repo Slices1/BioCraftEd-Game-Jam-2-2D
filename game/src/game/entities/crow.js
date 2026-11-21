@@ -38,8 +38,8 @@ export class Crow extends Body {
     const has = sprites.has(`${base}_${FACE_V[d] || 'e'}`);
     if (has) {
       ctx.save(); ctx.translate(sx, by); ctx.scale(1 / sq, sq); // gentle squash/stretch only, no frame snapping
-      sprites.drawDir(ctx, base, d, 0, 0, W);
-      { ctx.globalAlpha = 0.5 + 0.5 * slow * this._amp * 0.8; sprites.drawDir(ctx, 'crow_flyb', d, 0, 0, W); }
+      const frame = moving && Math.floor(t * 6) % 2 ? 'crow_flyb' : base; // one frame at a time, slow wingbeat while moving
+      sprites.drawDir(ctx, frame, d, 0, 0, W);
       ctx.restore();
       return this.drawCarry(ctx, sx, by, d);
     }
