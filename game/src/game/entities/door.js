@@ -41,7 +41,7 @@ export class Door extends Entity {
     const b = (u, v, z, du, dv, hh, c) => (ax === 'x' ? box(ctx, x + u, y + v, z, du, dv, hh, c) : box(ctx, x + v, y + u, z, dv, du, hh, c));
     const pt = (u, v, z) => (ax === 'x' ? P(x + u, y + v, z) : P(x + v, y + u, z));
     const [dsx, dsy] = P(x + 0.5, y + 0.5, 0), gate = this.cogs(w).length > 0;
-    const spr = sprites.draw(ctx, (gate ? 'gate_' : 'door') + (o > 0.5 ? (gate ? 'open' : '_open') : (gate ? 'closed' : '')), null, dsx, dsy + 18, 72, ax === 'y');
+    const spr = sprites.draw(ctx, (gate ? 'gate_' : 'door') + (o > 0.5 ? (gate ? 'open' : '') : (gate ? 'closed' : '_open')), null, dsx, dsy + 18, 72, ax === 'y');
     if (!spr) {
     b(0, 0.2, 0, 1, 0.6, 0.05, FLOOR);                       // threshold slot
     b(0, 0.15, 0, 0.16, 0.7, h + 0.4, FR);                   // posts
